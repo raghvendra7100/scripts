@@ -21,7 +21,6 @@ flatpak remote-modify --enable flathub
 echo -e "Installing and updating dnf packages ...\n"
 sudo dnf update -y
 sudo dnf install -y android-tools \
-                    discord \
                     htop \
                     java-latest-openjdk-devel.x86_64 \
 		    java-latest-openjdk.x86_64 \
@@ -31,6 +30,7 @@ sudo dnf install -y android-tools \
                     tldr
 
 flatpak install flathub -y com.anydesk.Anydesk \
+			   com.discordapp.Discord \
 			   com.microsoft.EdgeDev \
 			   com.visualstudio.code \
 			   io.github.mimbrero.WhatsAppDesktop \
@@ -54,6 +54,17 @@ sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo systemctl start docker
+
+# Provide host terminal to vscode flatpak
+cat > "$HOME/.config/Code/User/settings.json" <<EOF
+{
+    "workbench.editor.untitled.hint": "hidden",
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.minimap.enabled": false,
+    "git.openRepositoryInParentFolders": "never",
+    "liveServer.settings.donotShowInfoMsg": true
+}
+EOF
 
 # battop
 echo -e "\nInstalling battop..."
