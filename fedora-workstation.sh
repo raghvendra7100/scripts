@@ -105,7 +105,7 @@ sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.re
 sudo dnf install -y gh
 
 git config --global user.email "sharmaraghvendra63@gmail.com"
-git config --global user.name "Raghvendra Sharma" 
+git config --global user.name "raghvendra7100" 
 
 git config --global alias.cp 'cherry-pick'
 git config --global alias.c 'commit'
